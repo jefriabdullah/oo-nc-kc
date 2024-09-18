@@ -68,4 +68,4 @@ secrets:
   mysql_password:
     file: /root/secrets/mysql_password.txt # put postgresql password in this file
   mysql_user:
-    file: /secrets/root/mysql_user.txt # put postgresql username in this file
+    file: /root/secrets/mysql_user.txt # put postgresql username in this file
