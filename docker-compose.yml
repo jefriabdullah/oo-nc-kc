@@ -15,13 +15,13 @@ services:
       - /opt/caddy/site:/srv
       - /opt/caddy/data:/data
       - /opt/caddy/config:/config
-    network_mode: host
+#    network_mode: host
 
   app:
     image: nextcloud
     restart: always
-    ports:
-      - 8080:80
+#    ports:
+#      - 8080:80
     volumes:
       - /opt/nextcloud:/var/www/html
     environment:
@@ -41,7 +41,6 @@ services:
       - mysql_db
       - mysql_password
       - mysql_user
-
 
   db:
     image: mariadb:10.6
