@@ -15,12 +15,12 @@ services:
       - /opt/caddy/site:/srv
       - /opt/caddy/data:/data
       - /opt/caddy/config:/config
-
+#    network_mode: host
 
   app:
     image: nextcloud
     restart: always
-#    ports: #Served via caddy
+#    ports:
 #      - 8080:80
     volumes:
       - /opt/nextcloud:/var/www/html
@@ -29,20 +29,10 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - NEXTCLOUD_ADMIN_USER=${NEXTCLOUD_ADMIN_USER}
-      - NEXTCLOUD_ADMIN_PASSWORD=${NEXTCLOUD_ADMIN_PASSWORD}
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
       # - TRUSTED_PROXIES=localhost
     depends_on:
       - db
       - caddy
-      - redis
-
-  redis:
-    image: redis
-    restart: always
-    command: redis-server
 
   db:
     image: mariadb:10.6
@@ -55,5 +45,8 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
+
+
 
 

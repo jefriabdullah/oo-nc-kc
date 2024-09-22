@@ -1,9 +1,15 @@
-{
-    email jefri0000@gmail.com 
-}
-cloud.domain.com {
-    reverse_proxy app:80
-}
-sso.domain.com {
-    reverse_proxy sso:80
-}
+# If caddy behind a proxy, you need to tell it which IP addresses are trusted.
+#{
+#   servers {
+#      trusted_proxies static 172.16.0.10
+#    }
+#}
+
+
+    http://cloud.serverdemo.net {
+       reverse_proxy app:80
+    }
+
+    http://sso.serverdemo.net {
+       reverse_proxy keycloak:8080 {
+    }
